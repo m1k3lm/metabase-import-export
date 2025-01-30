@@ -1,2 +1,1 @@
-# metabase-import-export
-A repository for importing and exporting Metabase questions, dashboards, and queries using GitHub Actions
+This repository is empty. Any task executed on it should be considered a new capability and needs to be created.
