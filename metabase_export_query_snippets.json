@@ -1,0 +1,188 @@
+{
+    "queries": [
+        {
+            "description": null,
+            "archived": false,
+            "creator": {
+                "email": "kirill.panduro@sequra.es",
+                "first_name": "Kirill",
+                "last_login": "2024-09-27T09:20:31.109856Z",
+                "is_qbnewb": false,
+                "is_superuser": false,
+                "id": 31,
+                "last_name": "Panduro",
+                "date_joined": "2023-10-10T08:17:25.222487Z",
+                "common_name": "Kirill Panduro"
+            },
+            "content": "SELECT\n  ar.i_created_at::date AS created_at,\n  replace(\n    substring(\n      ar.i_created_at::text\n      FROM\n        1 FOR 7\n    ),\n    '-',\n    ''\n  ) codmes,\n  ar.uuid,\n  ar.credit_agreement_original_order_value AS original_order_value,\n  ar.si_reference AS merchant_ref,\n  ar.sector,\n  ar.store_ref,\n  ar.us_state_corrected,\n  ar.us_state,\n  is_repeat_buyer,\n  ar.unique_solicitation_id,\n  ar.credit_agreement_instalment_count AS instalment_count,\n  is_valid_aeta AS raw_result_aeta,\n  ur.date_first_call,\n  ur.date_last_call,\n  ur.category_last_event,\n  ur.subcategory_last_event,\n  sc.channel,\n  sc.day_created_at AS created_at_sc,\n  sc.day_screened_at,\n  sc.hour_screened_at,\n  sc.reviewer,\n  sc.transaction_monitoring_label,\n  sc.blocked_order,\n  sc.assessment,\n  sc.shopper_called,\n  sc.shopper_answered,\n  sc.malpractice_merchant,\n  sc.shopper_debt_ratio,\n  sc.shopper_profession,\n  sc.shopper_nationality,\n  sc.shopper_monthly_income,\n  sc.shopper_credit_card_owner,\n  sc.shopper_employment_situation,\n  sc.shopper_seniority_in_the_company,\n  sc.blocked_order_simba,\n  sc.customer_blocking_reason_simba,\n  sc.customer_blocked,\n  sc.assessment_reason,\n  sc.comment_,\n  ar.main_rejector AS key_rejector,\n  ar.country_code,\n  rej.\"cartcontainsimminentlodging\",\n  rej.\"chimfilterinvoicing\",\n  rej.\"badcreditdata::experian\" AS badcreditdata_experian,\n  rej.\"manuallyblockedmerchant\",\n  rej.\"orderhistoryrejectors::ordertotaloverlimit\" AS orderhistoryrejectors_ordertotaloverlimit,\n  rej.\"ordertotalunderminimumlimit\",\n  rej.\"cartcontainsforbiddensupplier\",\n  rej.\"exceedspaymentplanallowedduration\",\n  rej.\"blacklistrejectors::automaticallyblocked::matchesblockednin\" AS blacklistrejectors_automaticallyblocked_matchesblockednin,\n  rej.\"blacklistrejectors::automaticallyblocked::matchesblockedip\" AS blacklistrejectors_automaticallyblocked_matchesblockedip,\n  rej.\"requireslivescreening\",\n  rej.\"matchesblockedpostalcodeinlocalblacklist\",\n  rej.\"badcreditdata::equifax\" AS badcreditdata_equifax,\n  rej.\"paymentplantoolongforordervalue\",\n  rej.\"cartcontainsforbiddenwords\",\n  rej.\"badrecipientname\",\n  rej.\"mandatorydocumentationrequest\",\n  rej.\"aeatnifvalidator\",\n  rej.\"matchesblockednameinpostalarea\",\n  rej.\"timeofdayfilter\",\n  rej.\"creditscorebelowthreshold\",\n  rej.\"blacklistrejectors::manuallyblocked::matchesblockedphone\" AS blacklistrejectors_manuallyblocked_matchesblockedphone,\n  rej.\"dateofbirthfilter\",\n  rej.\"cartcontainsonewaytrip\",\n  rej.\"exceedsacceptableaggregatedvolumeforlongcredits\",\n  rej.\"exceedsnumberofanexpensiveproduct\",\n  rej.\"allowswithsaferinstalmentcount\",\n  rej.\"renting_agreement\",\n  rej.\"exceedsnumberofexpensiveproducts\",\n  rej.\"email\",\n  rej.\"blacklistrejectors::manuallyblocked::matchesblockedip\" AS blacklistrejectors_manuallyblocked_matchesblockedip,\n  rej.\"matchesblockedmerchantstore\",\n  rej.\"blacklistrejectors::automaticallyblocked::matchesblockedphone\" AS blacklistrejectors_utomaticallyblocked_matchesblockedphone,\n  rej.\"badcreditdata::synapseficp\" AS badcreditdata_synapseficp,\n  rej.\"matchesblockednintype\",\n  rej.\"blockedemaildomain\",\n  rej.\"serviceorderrequiresdni\",\n  rej.\"multiplevalidnins\",\n  rej.\"orderhistoryrejectors::exceedsdebtlimitperproductfamily\" AS orderhistoryrejectors_exceedsdebtlimitperproductfamily,\n  rej.\"exceedsacceptableexpensiveordercountbyperiod\",\n  rej.\"exceedsallowedproducttypepurchases\",\n  rej.\"blacklistrejectors::manuallyblocked::matchesblockednin\" AS blacklistrejectors_manuallyblocked_matchesblockednin,\n  rej.\"exceedsacceptableordercountforlongcredits\",\n  rej.\"exceedsaggregatedvalueofsalesbyperiod\",\n  rej.\"requiressafercreditagreement\",\n  rej.\"cartcontainsinvalidflightorigin\",\n  rej.\"blacklistrejectors::manuallyblocked::matchesblockedemail\" AS blacklistrejectors_manuallyblocked_matchesblockedemail,\n  rej.\"orderhistoryrejectors::overdueorders\" AS orderhistoryrejectors_overdueorders,\n  rej.\"cartcontainsimminentflights\",\n  rej.\"blacklistrejectors::automaticallyblocked::matchesblockedaddress\" AS blacklistrejectors_automaticallyblocked_matchesblockedaddress,\n  rej.\"allowswithsafercreditagreement\",\n  rej.\"badcreditdata::crif\" AS badcreditdata_crif,\n  rej.\"matchesblockedphoneprovider\",\n  rej.\"orderhistoryrejectors::ordertotaloverremaininglimit\" AS orderhistoryrejectors_ordertotaloverremaininglimit,\n  rej.\"orderhistoryrejectors::toomanyimmatureorders\" AS orderhistoryrejectors_toomanyimmatureorders,\n  rej.\"allowswithslicedpayment\",\n  rej.\"orderhistoryrejectors::exceedsallowedpurchasevelocity\" AS orderhistoryrejectors_exceedsallowedpurchasevelocity,\n  rej.\"credit_agreement\",\n  rej.\"previousrejectedidentification\",\n  rej.\"blacklistrejectors::automaticallyblocked::matchesblockedemail\" AS blacklistrejectors_automaticallyblocked_matchesblockedemail,\n  rej.\"blacklistrejectors::manuallyblocked::matchesblockedaddress\" AS blacklistrejectors_manuallyblocked_matchesblockedaddress,\n  orej.overridden_rejections,\n  orej.reasons_to_override,\n  --  equifax info\n  equifax.totalnumberofoperations,\n  equifax.numberofconsumercreditoperations,\n  equifax.numberofmortgageoperations,\n  equifax.numberofpersonalloanoperations,\n  equifax.numberofcreditcardoperations,\n  equifax.numberoftelcooperations,\n  equifax.totalnumberofotherunpaid,\n  equifax.totalunpaidbalance,\n  equifax.unpaidbalanceownentity,\n  equifax.unpaidbalanceofotherentities,\n  equifax.unpaidbalanceofconsumercredit,\n  equifax.unpaidbalanceofmortgage,\n  equifax.unpaidbalanceofpersonalloan,\n  equifax.unpaidbalanceofcreditcard,\n  equifax.unpaidbalanceoftelco,\n  equifax.unpaidbalanceofotherproducts,\n  equifax.worstunpaidbalance,\n  equifax.numberofdaysofworstsituation,\n  equifax.numberofcreditors,\n  equifax.delincuencydays,\n  equifax.score,\n  equifax_s.avg_score,\n  equifax_s.max_score,\n  equifax_s.min_score,\n  iscore.score AS sqore,\n  ar.sequra_privacy_policy_accepted,\n  ar.sequra_privacy_policy_accepted_touched,\n  ar.validation_code_touched\nFROM\n  l2_risk.acceptance_rate_funnel AS ar\n  LEFT JOIN l2_risk.unpayment_reasons_by_order AS ur ON ar.order_id = ur.order_id\n  LEFT JOIN l2_risk.rejectors_by_order AS rej ON ar.uuid = rej.uuid\n  LEFT JOIN l2_risk.screeners_information AS sc ON ar.uuid = sc.uuid\n  LEFT JOIN l2_risk.info_equifax_order AS equifax ON ar.uuid = equifax.uuid\n  LEFT JOIN L2_risk.info_equifax_shopper equifax_s ON ar.uuid=equifax_s.uuid\n  LEFT JOIN l2_risk.internal_score AS iscore ON ar.uuid = iscore.uuid\n  LEFT JOIN l2_risk.transactions as t on ar.uuid=t.uuid\n  LEFT JOIN l2_risk.overridden_rejections orej on ar.uuid=orej.uuid",
+            "collection_id": null,
+            "name": "accepted rejected",
+            "creator_id": 31,
+            "updated_at": "2024-09-02T12:28:18.161525Z",
+            "id": 4,
+            "entity_id": "G3-p7Qu0ARj3YsDgpRufi",
+            "created_at": "2024-09-02T08:09:24.676642Z"
+        },
+        {
+            "description": null,
+            "archived": false,
+            "creator": {
+                "email": "mikel.martin@sequra.es",
+                "first_name": "Mikel",
+                "last_login": "2025-02-17T08:18:52.558794Z",
+                "is_qbnewb": false,
+                "is_superuser": false,
+                "id": 21,
+                "last_name": "Martin",
+                "date_joined": "2023-03-17T09:35:03.922546Z",
+                "common_name": "Mikel Martin"
+            },
+            "content": "CASE WHEN\n    /* Check for valid IPv4: four groups of 0-255 */\n        \"l1_main\".\"fact_orders\".\"raw_before__platform__name\" ~ \n        '^(25[0-5]|2[0-4]\\d|[01]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[01]?\\d?\\d)){3}$' OR \n    /* Check for a (simplified) IPv6 pattern */\n        \"l1_main\".\"fact_orders\".\"raw_before__platform__name\" ~ \n        '^([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}$' OR \n        \"l1_main\".\"fact_orders\".\"raw_before__platform__name\" ~* '.*logicommerce.*'\n    THEN 'Logicommerce'\n    \n    WHEN \"l1_main\".\"fact_orders\".\"raw_before__platform__name\" = 'REPLACE WITH CORRECT VALUE BEFORE QA' THEN 'Vitaldent'\n    WHEN \"l1_main\".\"fact_orders\".\"raw_before__platform__name\" = 'Shopify Gateway' THEN 'Shopify'\n    WHEN \"l1_main\".\"fact_orders\".\"raw_before__platform__name\" = 'Shopify Payment App' THEN 'Shopify'\n    WHEN \"l1_main\".\"fact_orders\".\"raw_before__platform__name\" = 'ShopinCloud software by LiveCommerce' THEN 'LiveCommerce'\n    WHEN \"l1_main\".\"fact_orders\".\"raw_before__platform__name\" like '%magento%' THEN 'Magento'\n    WHEN \"l1_main\".\"fact_orders\".\"raw_before__platform__name\" = 'Sequra Salesforce Commerce Cloud' THEN 'Salesforce'\n/* If the value is one of these known platforms, return it as is */\nWHEN \"l1_main\".\"fact_orders\".\"raw_before__platform__name\" IN ('Magento', 'PrestaShop', 'WooCommerce', 'Velfix', 'Wix', 'BigCommerce', 'Drupal', 'OpenCart', 'Odoo', 'Shopify', 'Shenzi', 'InstoreSales', 'Atnova Shop', 'Dataweb', 'OsCommerce','Salesforce','nemuru','OpenTiendas')\n    THEN \"l1_main\".\"fact_orders\".\"raw_before__platform__name\"\n\n/* Otherwise, return \"Other\" */\nELSE 'Custom (API)' END AS platform",
+            "collection_id": null,
+            "name": "Clean platform Name in orders",
+            "creator_id": 21,
+            "updated_at": "2025-02-20T23:12:39.950357Z",
+            "id": 7,
+            "entity_id": "mcY5Y906C64fcClqaRJUM",
+            "created_at": "2025-02-13T00:02:16.351319Z"
+        },
+        {
+            "description": null,
+            "archived": false,
+            "creator": {
+                "email": "kirill.panduro@sequra.es",
+                "first_name": "Kirill",
+                "last_login": "2024-09-27T09:20:31.109856Z",
+                "is_qbnewb": false,
+                "is_superuser": false,
+                "id": 31,
+                "last_name": "Panduro",
+                "date_joined": "2023-10-10T08:17:25.222487Z",
+                "common_name": "Kirill Panduro"
+            },
+            "content": "WITH RankedTransactions AS (\n    SELECT\n        shopper_id,\n        order_id,\n        confirmed_at,\n        days_unbalanced,\n        ROW_NUMBER() OVER (PARTITION BY shopper_id ORDER BY confirmed_at) AS rn\n    FROM\n        \"l2_risk\".\"transactions\"\n),\nPreviousDays AS (\n    SELECT\n        shopper_id,\n        order_id,\n        confirmed_at,\n        days_unbalanced,\n        rn,\n        MAX(days_unbalanced) OVER (\n            PARTITION BY shopper_id \n            ORDER BY rn \n            ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING\n        ) AS previous_highest_days_unbalanced\n    FROM\n        RankedTransactions\n),\nPreviousConfirmedAt AS (\n    SELECT\n        pd.shopper_id,\n        pd.order_id,\n        pd.confirmed_at,\n        pd.days_unbalanced,\n        pd.previous_highest_days_unbalanced,\n        rt.confirmed_at AS previous_confirmed_at\n    FROM\n        PreviousDays pd\n    LEFT JOIN\n        RankedTransactions rt\n    ON\n        pd.shopper_id = rt.shopper_id\n        AND pd.previous_highest_days_unbalanced = rt.days_unbalanced\n\n)\nSELECT\n    shopper_id,\n    order_id,\n    confirmed_at,\n    days_unbalanced,\n    previous_highest_days_unbalanced,\n    previous_confirmed_at,\n    current_date as today,\n    CAST(current_date AS DATE) - CAST(previous_confirmed_at AS DATE) AS days_since_previous_confirmed,\n    (days_since_previous_confirmed - previous_highest_days_unbalanced) as difference_days\nFROM\n    PreviousConfirmedAt limit;",
+            "collection_id": null,
+            "name": "DPD Calculation",
+            "creator_id": 31,
+            "updated_at": "2024-08-30T15:39:51.884661Z",
+            "id": 2,
+            "entity_id": "1bto-VmteJ0QaR2BSPvnH",
+            "created_at": "2024-08-30T15:39:51.884661Z"
+        },
+        {
+            "description": null,
+            "archived": false,
+            "creator": {
+                "email": "sebastian.oberti@sequra.es",
+                "first_name": "Sebastian",
+                "last_login": "2025-02-10T11:24:50.582289Z",
+                "is_qbnewb": false,
+                "is_superuser": false,
+                "id": 61,
+                "last_name": "Oberti",
+                "date_joined": "2024-06-06T08:25:00.122906Z",
+                "common_name": "Sebastian Oberti"
+            },
+            "content": " SUBSTRING(\n            \"l2_cro\".\"acceptance_rate_by_merchant_by_period\".\"dt_period\",\n            1,\n            4\n          ) AS \"Year\",\n          SUBSTRING(\n            \"l2_cro\".\"acceptance_rate_by_merchant_by_period\".\"dt_period\",\n            6,\n            2\n          ) AS \"Month\",",
+            "collection_id": null,
+            "name": "Month Year",
+            "creator_id": 61,
+            "updated_at": "2024-12-05T09:10:53.619268Z",
+            "id": 5,
+            "entity_id": "FhJ3WS9L8MxA8VoeHDY43",
+            "created_at": "2024-12-05T09:10:53.619268Z"
+        },
+        {
+            "description": null,
+            "archived": false,
+            "creator": {
+                "email": "ferran.pelayo@sequra.es",
+                "first_name": "Ferran",
+                "last_login": "2025-02-06T09:14:02.95654Z",
+                "is_qbnewb": false,
+                "is_superuser": false,
+                "id": 37,
+                "last_name": "Pelayo",
+                "date_joined": "2024-01-16T14:14:30.169227Z",
+                "common_name": "Ferran Pelayo"
+            },
+            "content": "    SELECT\n      order_id,\n      sum(amount) AS balance,\n      max(paid_on) AS last_paid_on\n    FROM\n      l0_simba.account_events\nWHERE\npaid_on <= {{paid_on}}\n    GROUP BY\n      order_id",
+            "collection_id": null,
+            "name": "order balances",
+            "creator_id": 37,
+            "updated_at": "2024-08-09T12:04:52.060572Z",
+            "id": 1,
+            "entity_id": "oC7zQLGAZIwJHoidtVXE0",
+            "created_at": "2024-07-23T15:14:08.591651Z"
+        },
+        {
+            "description": null,
+            "archived": false,
+            "creator": {
+                "email": "kirill.panduro@sequra.es",
+                "first_name": "Kirill",
+                "last_login": "2024-09-27T09:20:31.109856Z",
+                "is_qbnewb": false,
+                "is_superuser": false,
+                "id": 31,
+                "last_name": "Panduro",
+                "date_joined": "2023-10-10T08:17:25.222487Z",
+                "common_name": "Kirill Panduro"
+            },
+            "content": "SELECT\n  t.uuid,\n  t.confirmed_at::date AS day_conf,\n  replace(\n    substring(\n      t.confirmed_at::text\n      FROM\n        1 FOR 7\n    ),\n    '-',\n    ''\n  ) codmes,\n\n  t.original_product_name,\n  t.current_product_name,\n  t.original_campaign_name,\n  t.original_order_value,\n  t.current_order_value,\n  cart.shipped_cart_item_list,\n  cart.shipped_cart_quantity,\n  t.disbursement_model,\n  t.pacing_model,\n  t.is_cancelled,\n  t.cancelled_at,\n  t.cancellation_reason,\n  t.course_days_duration,\n  t.is_semifinanced,\n  t.is_autofinanced,\n  t.withholding,\n  c.amount_cession AS cession,\n  t.fees_amount + t.merchant_fee AS cost_of_credit,\n  t.initial_instalment_count,\n  t.paid_instalments_principal AS instalments_paid,\n  t.loan_book AS principal_unpaid,\n  t.merchant_fee AS fees_by_merchant,\n  t.revenue_servicing,\n  t.due_setup_fees AS setup_fees,\n  t.fees_amount AS fees,\n  t.paid_setup_fees AS fees_paid,\n  t.paid_late_fees,\n  t.unpaid_credit_risk AS unpaid_credit,\n  t.bucket_ps AS bucket_dc,\n  t.state,\n  t.days_unbalanced,\n  t.general_default,\n  t.default_1inst,\n  t.default_2inst,\n  \n  --- shopper info\n  s.shopper_id,\n  s.type_doc,\n  s.age,\n  s.postal_code,\n  t.mobile_phone_provider,\n  \n  -- merchantr info\n  m.si_reference,\n  t.store_ref,\n  t.operator_ref,\n  m.si_pc_name AS si_pc_reference,\n  m.partner_reference AS si_referral_reference,\n  m.country_code,\n  m.api_state,\n  m.segment_sub,\n  m.sector,\n  m.subsector,\n  m.product_range,\n  m.pacing_model AS pacing_model_merchant,\n  m.maturity_model,\n  m.ecommerce AS platform_name,\n  m.live_on,\n  m.pn_activated as pn_activated_at,\n  css.amount_cession AS cession_by_custody,\n  t.financier_id,\n  t.financier_name,\n  m.shared_with,\n  t.is_finished_paid as is_finished,\n  card.last_card_fingerprint AS card_fingerprint,\n  card.last_card_brand AS card_brand,\n  card.last_card_type card_type,\n  card.last_entity_name AS entity_name,\n  card.last_prepaid AS is_prepaid\nFROM\n  l2_risk.transactions t\n  LEFT JOIN l2_risk.cession AS c ON t.order_id = c.order_id\n  LEFT JOIN l2_risk.shopper_information s ON t.shopper_id = s.shopper_id\n  LEFT JOIN l2_risk.merchant_information AS m ON t.merchant_id = m.merchant_id\n  LEFT JOIN l2_risk.cart_content_confirmed_orders cart ON t.uuid = cart.uuid\n  LEFT JOIN l2_risk.card_information AS card ON t.order_id = card.order_id\n  LEFT JOIN l2_risk.cession AS css ON t.order_id = css.order_id\nWHERE\n  confirmed_at::date > '2019-01-01'",
+            "collection_id": null,
+            "name": "risk_orders",
+            "creator_id": 31,
+            "updated_at": "2024-09-03T08:20:20.901242Z",
+            "id": 3,
+            "entity_id": "5EGHdoQWTbfSW5VcreSFU",
+            "created_at": "2024-09-01T18:08:44.947614Z"
+        },
+        {
+            "description": null,
+            "archived": false,
+            "creator": {
+                "email": "gisela.molina@sequra.es",
+                "first_name": "Gisela",
+                "last_login": "2025-02-21T14:31:24.626638Z",
+                "is_qbnewb": false,
+                "is_superuser": false,
+                "id": 115,
+                "last_name": "Molina",
+                "date_joined": "2024-09-17T09:55:01.351974Z",
+                "common_name": "Gisela Molina"
+            },
+            "content": "select distinct\nt.uuid\n, t.merchant_id\n, m.si_reference\n, t.current_order_value as cov\n, case \n    when (\n         datepart('day', current_date - t.confirmed_at) > 35\n         and \n         (\n           datepart('day', current_date - t.confirmed_at) \n           - \n           (case \n                when cession_date is not null then datepart('day', current_date - cession_date) + 67 \n                else t.days_unbalanced \n            end)\n         ) < 35\n    ) then 1\n    else 0\nend as default_1inst\n, (case \n    when cession_date is not null then datepart('day', current_date - cession_date) + 67 \n    else t.days_unbalanced \nend) as days_unbalanced_alt\n, case \n    when days_unbalanced_alt > 0 then 1 \n    else 0 \nend as general_default\n, case\n    when ce.amount_cession is not null then ce.amount_cession\n    else\n        case\n            when general_default = 1 then f.overdue_downpayment_principal\n                 + f.overdue_instalments_principal\n                 + f.non_due_instalments_principal\n            else 0\n        end\nend as dov\n, case\n    when default_1inst = 1 then \n         case\n              when ce.amount_cession is not null then ce.amount_cession\n              else f.overdue_downpayment_principal \n                   + f.overdue_instalments_principal \n                   + f.non_due_instalments_principal\n         end\n    else 0\nend as dov_1inst\n, cu.custody_percentage\n, case when cu.custody_percentage is null then 0 else 1 end as has_custody\n, ce.amount_cession\n, case when ce.cession_date is null then 0 else 1 end as is_ceded\n, ce.balance_type\n, t.confirmed_at_date\n, case\n    when (t.is_semifinanced is true or t.is_autofinanced is true) then 1\n    else 0\nend as paas_model\n, cc.items_name as course_name\nfrom l2_risk.transactions t\nleft join l2_risk.cession ce on ce.order_id = t.order_id\nleft join l2_risk.custody cu on cu.order_id = t.order_id\njoin l2_cro.financials_data f on f.uuid = t.uuid\njoin l2_risk.cart_content_by_orders cc on cc.uuid = t.uuid\njoin l2_risk.merchant_information m on m.merchant_id = t.merchant_id\nwhere m.vertical = 'education'\nand (t.is_cancelled is false or (t.is_cancelled is true and t.current_order_value > 0))",
+            "collection_id": null,
+            "name": "select_merchant_data",
+            "creator_id": 115,
+            "updated_at": "2025-02-05T10:51:17.709976Z",
+            "id": 6,
+            "entity_id": "tkkfj4LZM8fjfjqwQtr8B",
+            "created_at": "2025-02-05T10:51:17.709976Z"
+        },
+        {
+            "description": "Split the plugin and platform version in mayor_version, minor_version and patch_version",
+            "archived": false,
+            "creator": {
+                "email": "mikel.martin@sequra.es",
+                "first_name": "Mikel",
+                "last_login": "2025-02-17T08:18:52.558794Z",
+                "is_qbnewb": false,
+                "is_superuser": false,
+                "id": 21,
+                "last_name": "Martin",
+                "date_joined": "2023-03-17T09:35:03.922546Z",
+                "common_name": "Mikel Martin"
+            },
+            "content": "   split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__version\", '.', 1) AS \"platform_mayor_version\",\n   split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__version\", '.', 1) ||'.'||split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__version\", '.', 2) AS \"platform_minor_version\",\n   split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__version\", '.', 1) ||'.'||split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__version\", '.', 2) || '.' || regexp_replace(split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__version\", '.', 3),'[\\.\\\\+,-].*', '') AS \"platform_patch_version\",\n   split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__plugin_version\", '.', 1) AS \"plugin_mayor_version\",\n   split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__plugin_version\", '.', 1) || '.' || split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__plugin_version\", '.', 2) AS \"plugin_minor_version\",\n   split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__plugin_version\", '.', 1) || '.' || split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__plugin_version\", '.', 2) || '.' || regexp_replace(split_part(\"l1_main\".\"fact_orders\".\"raw_before__platform__plugin_version\", '.', 3),'[\\.\\\\+,-].*', '') AS \"plugin_patch_version\"",
+            "collection_id": null,
+            "name": "Splitted platform version",
+            "creator_id": 21,
+            "updated_at": "2025-02-22T00:49:41.050186Z",
+            "id": 8,
+            "entity_id": "9IsTXaAMD4GrfJ4GLRlNx",
+            "created_at": "2025-02-21T23:45:26.393655Z"
+        }
+    ]
+}
